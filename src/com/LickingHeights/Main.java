@@ -1,4 +1,6 @@
 package com.LickingHeights;
+import sun.java2d.loops.DrawGlyphList;
+
 import java.util.Scanner;
 public class Main {
 
@@ -24,8 +26,9 @@ public class Main {
 
 
         System.out.println("Pick a Chakra Nature");
-
+        System.out.println("Fire = 0 \nWind = 1 \nLightning = 2\nEarth = 3\nWater = 4");
         while(true) {
+
             while (true) {
 
                 cpu =(int)(Math.random()*5);
@@ -36,39 +39,52 @@ public class Main {
                 userChakra = chakra[user];
                 System.out.println(userChakra);
 
-                switch (cpu) {
-                    case 0:
+                switch (cpuChakra) {
+                    case "fire":
                         if (userChakra == "wind" || userChakra == "lightning") {
                             cpuPoints++;
                         }
                         break;
-                    case 1:
+
+                    case "wind":
                         if (userChakra == "lightning" || userChakra == "earth") {
                             cpuPoints++;
-
                         }
-                    case 2:
 
+                    case "lightning":
                         if (userChakra == "earth" || userChakra == "water") {
                             cpuPoints++;
-
                         }
                         break;
-                    case 3:
 
+                    case "earth":
                         if (userChakra == "water" || userChakra == "fire") {
                             cpuPoints++;
-
                         }
                         break;
-                    case 4:
+
+                    case "water":
                         if (userChakra == "fire" || userChakra == "wind") {
                             cpuPoints++;
                         }
                         break;
 
+                    case "tie":
+                        if (cpuChakra == userChakra) {
+                            System.out.println("Tie");
+                        }
+                        break;
+
+                    case "user wins":
+                        userPoints++;
+                        break;
                 }
+
                 System.out.println("cpu points"+cpuPoints+"my points"+userPoints);
+
+                if (userPoints==5 || cpuPoints==5){
+                    break;
+                }
             }
         }
 
